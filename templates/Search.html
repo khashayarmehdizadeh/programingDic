@@ -12,14 +12,15 @@
         <a href="/">بازگشت به صفحه اصلی</a>
     </header>
     <section>
-        {% if results %}
+        {% if result %}
+            <h2>تعریف:</h2>
             <ul>
-            {% for result in results %}
-                <li><a href="/word/{{ result.id }}">{{ result.name }}</a>: {{ result.description }}</li>
-            {% endfor %}
+                {% for meaning in result[0].meanings %}
+                    <li><strong>{{ meaning.partOfSpeech }}:</strong> {{ meaning.definitions[0].definition }}</li>
+                {% endfor %}
             </ul>
         {% else %}
-            <p>هیچ نتیجه‌ای یافت نشد.</p>
+            <p>کلمه‌ای پیدا نشد یا مشکلی در ارتباط با API پیش آمد.</p>
         {% endif %}
     </section>
 </body>
