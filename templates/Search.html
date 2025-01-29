@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتایج جستجو</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <h1>نتایج جستجو برای "{{ query }}"</h1>
+        <a href="/">بازگشت به صفحه اصلی</a>
+    </header>
+    <section>
+        {% if results %}
+            <ul>
+            {% for result in results %}
+                <li><a href="/word/{{ result.id }}">{{ result.name }}</a>: {{ result.description }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>هیچ نتیجه‌ای یافت نشد.</p>
+        {% endif %}
+    </section>
+</body>
+</html>
